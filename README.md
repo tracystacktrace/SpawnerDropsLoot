@@ -1,4 +1,4 @@
-# SpawnerDropsLoot
+# Spawner Drops Loot
 
 ![Mod Logo](https://github.com/tracystacktrace/SpawnerDropsLoot/raw/master/docs/icon.png)
 
@@ -16,9 +16,9 @@ This mod aims to return loot drops of entities spawned in spawners.
 
 ### Installation Steps
 
-1. For NFC 3.5+ versions (has in-built ModLoader):
+1. For NFC 3.5+ versions (has built-in ModLoader):
    - Download and put the mod into `mods` folder.
-2. For NFC pre-3.5 versions (separate ModLoader):
+2. For NFC pre-3.5 versions (needs separate ModLoader):
    - Download ModLoader for your NFC version: https://newfrontiercraft.net/thread/179/nfc-v3-4-mods-addons
    - Download and put the mod into `mods` folder.
 
