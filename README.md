@@ -1,6 +1,6 @@
 # SpawnerDropsLoot
 
-![Mod Logo](https://github.com/tracystacktrace/SpawnerDropsLoot/raw/main/src/master/docs/icon.png)
+![Mod Logo](https://github.com/tracystacktrace/SpawnerDropsLoot/raw/master/docs/icon.png)
 
 While attempting to play through a challenge in my NFC world, I end up struggling over spawner-based mob farms.
 Entities spawned by spawners don't drop any loot, which is not good!
