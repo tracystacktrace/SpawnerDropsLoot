@@ -4,8 +4,8 @@ import net.minecraft.src.BlockMobSpawner;
 import net.minecraft.src.TileEntity;
 
 public class PatchedBlockMobSpawner extends BlockMobSpawner {
-    public PatchedBlockMobSpawner(int i, int j) {
-        super(i, j);
+    public PatchedBlockMobSpawner(int id, int texture) {
+        super(id, texture);
     }
 
     @Override

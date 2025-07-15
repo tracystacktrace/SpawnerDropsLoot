@@ -1,7 +1,7 @@
 package net.minecraft.src;
 
-import net.tracystacktrace.spawnerdropsloot.FinalFieldReplacer;
-import net.tracystacktrace.spawnerdropsloot.InvokeHelper;
+import net.tracystacktrace.spawnerdropsloot.FieldInvoker;
+import net.tracystacktrace.spawnerdropsloot.MethodInvoker;
 import net.tracystacktrace.spawnerdropsloot.PatchedBlockMobSpawner;
 import net.tracystacktrace.spawnerdropsloot.PatchedTileEntityMobSpawner;
 
@@ -17,12 +17,11 @@ public class mod_SpawnerDropsLoot extends BaseMod {
 
     static {
         System.out.println("[mod_SpawnerDropsLoot] The mod is attempting to replace instances of required fields!");
-        InvokeHelper.runObfuscationTester();
 
         //process tileentity
         System.out.println("[mod_SpawnerDropsLoot] Replacing \"MobSpawner\" tileentity with custom one");
-        final Map map1 = (Map) InvokeHelper.getStaticField(TileEntity.class, "classToNameMap", "b");
-        final Map map2 = (Map) InvokeHelper.getStaticField(TileEntity.class, "nameToClassMap", "a");
+        final Map map1 = (Map) FieldInvoker.getStaticField(TileEntity.class, "classToNameMap", "b");
+        final Map map2 = (Map) FieldInvoker.getStaticField(TileEntity.class, "nameToClassMap", "a");
 
         map1.remove(TileEntityMobSpawner.class);
         map2.remove("MobSpawner");
@@ -38,10 +37,10 @@ public class mod_SpawnerDropsLoot extends BaseMod {
         Block.blocksList[mobSpawnerBlockID] = null;
         Block customMobSpawner = new PatchedBlockMobSpawner(mobSpawnerBlockID, 65).setBlockName("mobSpawner");
 
-        InvokeHelper.invoke_setHardness(customMobSpawner, 5F);
-        InvokeHelper.invoke_setStepSound(customMobSpawner, Block.soundMetalFootstep);
-        InvokeHelper.invoke_disableStats(customMobSpawner);
-        FinalFieldReplacer.setStaticFinal(Block.class, "mobSpawner", "at", customMobSpawner);
+        MethodInvoker.invoke_setHardness(customMobSpawner, 5F);
+        MethodInvoker.invoke_setStepSound(customMobSpawner, Block.soundMetalFootstep);
+        MethodInvoker.invoke_disableStats(customMobSpawner);
+        FieldInvoker.setStaticFinalField(Block.class, "mobSpawner", "at", customMobSpawner);
 
         System.out.println("[mod_SpawnerDropsLoot] Success! Enjoy your lootable spawners!");
     }
