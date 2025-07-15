@@ -15,6 +15,21 @@ public class mod_SpawnerDropsLoot extends BaseMod {
         return "0.1";
     }
 
+    @SuppressWarnings("unused")
+    public String Name() {
+        return "Spawner Drops Loot";
+    }
+
+    @SuppressWarnings("unused")
+    public String Description() {
+        return "Spawner entities now drop loot!";
+    }
+
+    @SuppressWarnings("unused")
+    public String Icon() {
+        return "/net/tracystacktrace/spawnerdropsloot/icon.png";
+    }
+
     static {
         System.out.println("[mod_SpawnerDropsLoot] The mod is attempting to replace instances of required fields!");
 
