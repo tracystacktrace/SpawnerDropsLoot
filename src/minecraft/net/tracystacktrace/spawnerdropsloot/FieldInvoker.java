@@ -1,5 +1,6 @@
 package net.tracystacktrace.spawnerdropsloot;
 
+import net.minecraft.client.Minecraft;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
@@ -10,12 +11,12 @@ public final class FieldInvoker {
     private static final Unsafe UNSAFE;
     public static final boolean OBFUSCATED;
 
-    static {
+    static  {
         boolean test_obf;
         try {
-            Class<?> test = Class.forName("net.minecraft.src.ModLoader");
-            test_obf = test != null;
-        } catch (ClassNotFoundException e) {
+            Minecraft.class.getDeclaredField("theMinecraft");
+            test_obf = false;
+        } catch (NoSuchFieldException e) {
             test_obf = true;
         }
         OBFUSCATED = test_obf;

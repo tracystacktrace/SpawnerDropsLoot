@@ -7,25 +7,22 @@ import net.tracystacktrace.spawnerdropsloot.PatchedTileEntityMobSpawner;
 
 import java.util.Map;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
+@SuppressWarnings({"rawtypes", "unchecked", "unused"})
 public class mod_SpawnerDropsLoot extends BaseMod {
 
     @Override
     public String Version() {
-        return "0.1";
+        return "0.2";
     }
 
-    @SuppressWarnings("unused")
     public String Name() {
         return "Spawner Drops Loot";
     }
 
-    @SuppressWarnings("unused")
     public String Description() {
         return "Spawner entities now drop loot!";
     }
 
-    @SuppressWarnings("unused")
     public String Icon() {
         return "/net/tracystacktrace/spawnerdropsloot/icon.png";
     }
