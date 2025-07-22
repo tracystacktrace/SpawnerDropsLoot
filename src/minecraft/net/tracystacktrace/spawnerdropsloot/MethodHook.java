@@ -12,7 +12,7 @@ public abstract class MethodHook<T> {
 
     @SuppressWarnings("unchecked")
     public T invoke(Object... args) {
-        if(!initialized) {
+        if (!initialized) {
             try {
                 final Method method = this.getMethod();
                 method.setAccessible(true);

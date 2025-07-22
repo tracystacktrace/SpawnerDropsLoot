@@ -22,7 +22,7 @@ public abstract class FieldHook<T> {
 
     @SuppressWarnings("unchecked")
     public T invoke(Object instance) {
-        if(!initialized) {
+        if (!initialized) {
             try {
                 final Field field = this.getField();
                 field.setAccessible(true);
