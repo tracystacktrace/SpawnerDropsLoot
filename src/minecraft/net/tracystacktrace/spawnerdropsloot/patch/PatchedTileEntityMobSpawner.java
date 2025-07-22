@@ -1,13 +1,14 @@
-package net.tracystacktrace.spawnerdropsloot;
+package net.tracystacktrace.spawnerdropsloot.patch;
 
 import net.minecraft.src.*;
+import net.tracystacktrace.spawnerdropsloot.HookTools;
 
 public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
     /**
      * A simple accessor for TileEntityMobSpawner.updateDelay() as it's private
      */
     void inject_updateDelay() {
-        MethodInvoker.invokeVoidE(TileEntityMobSpawner.class, this, "updateDelay", "d");
+        HookTools.m_TileEntityMobSpawner_updateDelay.invoke(this);
     }
 
     public void updateEntity() {
@@ -44,7 +45,8 @@ public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
                 return;
             }
 
-            final String mobID = (String) MethodInvoker.getVirtualField(TileEntityMobSpawner.class, this, "mobID", "i");
+
+            final String mobID = HookTools.f_TileEntityMobSpawner_mobID.invoke(this);
 
             for (int attempt = 0; attempt < 4; attempt++) {
                 final Entity entity = EntityList.createEntityInWorld(mobID, worldObj);

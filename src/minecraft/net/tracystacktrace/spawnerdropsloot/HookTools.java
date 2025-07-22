@@ -1,15 +1,24 @@
 package net.tracystacktrace.spawnerdropsloot;
 
 import net.minecraft.client.Minecraft;
+import net.tracystacktrace.spawnerdropsloot.hooks.f_TileEntityMobSpawner_mobID;
+import net.tracystacktrace.spawnerdropsloot.hooks.m_TileEntityMobSpawner_updateDelay;
 import sun.misc.Unsafe;
 
+import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-public final class FieldInvoker {
+@SuppressWarnings("TryWithIdenticalCatches")
+public final class HookTools {
     private static final boolean OLD_JAVA; //pre 8
-    private static final Unsafe UNSAFE;
     public static final boolean OBFUSCATED;
+
+    private static final Unsafe UNSAFE;
+    public static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
+
+    public static final m_TileEntityMobSpawner_updateDelay m_TileEntityMobSpawner_updateDelay = new m_TileEntityMobSpawner_updateDelay();
+    public static final f_TileEntityMobSpawner_mobID f_TileEntityMobSpawner_mobID = new f_TileEntityMobSpawner_mobID();
 
     static  {
         boolean test_obf;

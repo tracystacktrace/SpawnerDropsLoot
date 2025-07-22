@@ -1,9 +1,8 @@
 package net.minecraft.src;
 
-import net.tracystacktrace.spawnerdropsloot.FieldInvoker;
-import net.tracystacktrace.spawnerdropsloot.MethodInvoker;
-import net.tracystacktrace.spawnerdropsloot.PatchedBlockMobSpawner;
-import net.tracystacktrace.spawnerdropsloot.PatchedTileEntityMobSpawner;
+import net.tracystacktrace.spawnerdropsloot.HookTools;
+import net.tracystacktrace.spawnerdropsloot.patch.PatchedBlockMobSpawner;
+import net.tracystacktrace.spawnerdropsloot.patch.PatchedTileEntityMobSpawner;
 
 import java.util.Map;
 
@@ -32,8 +31,8 @@ public class mod_SpawnerDropsLoot extends BaseMod {
 
         //process tileentity
         System.out.println("[mod_SpawnerDropsLoot] Replacing \"MobSpawner\" tileentity with custom one");
-        final Map map1 = (Map) FieldInvoker.getStaticField(TileEntity.class, "classToNameMap", "b");
-        final Map map2 = (Map) FieldInvoker.getStaticField(TileEntity.class, "nameToClassMap", "a");
+        final Map map1 = (Map) HookTools.getStaticField(TileEntity.class, "classToNameMap", "b");
+        final Map map2 = (Map) HookTools.getStaticField(TileEntity.class, "nameToClassMap", "a");
 
         map1.remove(TileEntityMobSpawner.class);
         map2.remove("MobSpawner");
@@ -47,13 +46,9 @@ public class mod_SpawnerDropsLoot extends BaseMod {
         final int mobSpawnerBlockID = Block.mobSpawner.blockID;
 
         Block.blocksList[mobSpawnerBlockID] = null;
-        Block customMobSpawner = new PatchedBlockMobSpawner(mobSpawnerBlockID, 65).setBlockName("mobSpawner");
+        final PatchedBlockMobSpawner customMobSpawner = new PatchedBlockMobSpawner(mobSpawnerBlockID, 65);
 
-        MethodInvoker.invoke_setHardness(customMobSpawner, 5F);
-        MethodInvoker.invoke_setStepSound(customMobSpawner, Block.soundMetalFootstep);
-        MethodInvoker.invoke_disableStats(customMobSpawner);
-        FieldInvoker.setStaticFinalField(Block.class, "mobSpawner", "at", customMobSpawner);
-
+        HookTools.setStaticFinalField(Block.class, "mobSpawner", "at", customMobSpawner);
         System.out.println("[mod_SpawnerDropsLoot] Success! Enjoy your lootable spawners!");
     }
 }
