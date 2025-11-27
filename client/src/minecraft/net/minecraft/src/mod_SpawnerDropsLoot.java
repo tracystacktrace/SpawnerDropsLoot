@@ -3,15 +3,18 @@ package net.minecraft.src;
 import net.tracystacktrace.spawnerdropsloot.HookTools;
 import net.tracystacktrace.spawnerdropsloot.patch.PatchedBlockMobSpawner;
 import net.tracystacktrace.spawnerdropsloot.patch.PatchedTileEntityMobSpawner;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 @SuppressWarnings({"rawtypes", "unchecked", "unused"})
 public class mod_SpawnerDropsLoot extends BaseMod {
+    private static final DateTimeFormatter HHMMSS_FORMAT = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    public static final Logger LOGGER = LogManager.getLogger("SpawnerDropsLoot");
+    public static void log(String message) {
+        System.out.printf("[%s] [Spawner Drops Loot] %s\n", LocalTime.now().format(HHMMSS_FORMAT), message);
+    }
 
     @Override
     public String Version() {
@@ -31,10 +34,10 @@ public class mod_SpawnerDropsLoot extends BaseMod {
     }
 
     static {
-        LOGGER.info("The mod is attempting to replace instances of required fields!");
+        log("The mod will attempt to replace instances of mob spawner block + tile entity!");
 
         //process tileentity
-        LOGGER.info("Replacing \"MobSpawner\" tileentity with custom one");
+        log("1/2: Replacing \"MobSpawner\" TileEntity with a patched version...");
         final Map map1 = (Map) HookTools.getStaticField(TileEntity.class, "classToNameMap", "b");
         final Map map2 = (Map) HookTools.getStaticField(TileEntity.class, "nameToClassMap", "a");
 
@@ -46,13 +49,14 @@ public class mod_SpawnerDropsLoot extends BaseMod {
 
 
         //process block
-        LOGGER.info("Replacing \"Mob Spawner\" block with custom one");
-        final int mobSpawnerBlockID = Block.mobSpawner.blockID;
+        log("2/2: Replacing \"mobSpawner\" block with a patched version...");
+        final int mobSpawnerBlockID = Block.mobSpawner.blockID; //take the block ID
 
-        Block.blocksList[mobSpawnerBlockID] = null;
+        Block.blocksList[mobSpawnerBlockID] = null; //make it null to safely opt-out
         final PatchedBlockMobSpawner customMobSpawner = new PatchedBlockMobSpawner(mobSpawnerBlockID, 65);
 
+        //we have to put it into the private static field (with absurd tools) so the game would adequately function later
         HookTools.setStaticFinalField(Block.class, "mobSpawner", "at", customMobSpawner);
-        LOGGER.info("Success! Enjoy your lootable spawners!");
+        log("Success! Enjoy your lootable spawners!");
     }
 }
