@@ -4,11 +4,8 @@ import net.minecraft.src.*;
 import net.tracystacktrace.spawnerdropsloot.HookTools;
 
 public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
-    /**
-     * A simple accessor for TileEntityMobSpawner.updateDelay() as it's private
-     */
-    void inject_updateDelay() {
-        HookTools.m_TileEntityMobSpawner_updateDelay.invoke(this);
+    private void customUpdateDelay() {
+        this.delay = 200 + worldObj.rand.nextInt(400);
     }
 
     public void updateEntity() {
@@ -37,7 +34,7 @@ public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
 
         if (!worldObj.multiplayerWorld) {
             if (delay == -1) {
-                this.inject_updateDelay();
+                this.customUpdateDelay();
             }
 
             if (delay > 0) {
@@ -61,7 +58,7 @@ public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
 
                 final int testEntities = worldObj.getEntitiesWithinAABB(entity.getClass(), AxisAlignedBB.getBoundingBoxFromPool(xCoord, yCoord, zCoord, xCoord + 1, yCoord + 1, zCoord + 1).expand(8D, 4D, 8D)).size();
                 if (testEntities >= 6) {
-                    this.inject_updateDelay();
+                    this.customUpdateDelay();
                     return;
                 }
 
@@ -88,7 +85,7 @@ public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
                 if (entityliving != null) {
                     entityliving.spawnExplosionParticle();
                 }
-                this.inject_updateDelay();
+                this.customUpdateDelay();
             }
 
         }

@@ -1,7 +1,6 @@
 package net.tracystacktrace.spawnerdropsloot;
 
 import net.tracystacktrace.spawnerdropsloot.hooks.f_TileEntityMobSpawner_mobID;
-import net.tracystacktrace.spawnerdropsloot.hooks.m_TileEntityMobSpawner_updateDelay;
 import sun.misc.Unsafe;
 
 import java.lang.invoke.MethodHandles;
@@ -13,7 +12,6 @@ public final class HookTools {
     private static final Unsafe UNSAFE;
     public static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
 
-    public static final m_TileEntityMobSpawner_updateDelay m_TileEntityMobSpawner_updateDelay = new m_TileEntityMobSpawner_updateDelay();
     public static final f_TileEntityMobSpawner_mobID f_TileEntityMobSpawner_mobID = new f_TileEntityMobSpawner_mobID();
 
     static {
