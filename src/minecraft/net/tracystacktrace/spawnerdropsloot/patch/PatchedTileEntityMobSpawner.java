@@ -42,11 +42,8 @@ public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
                 return;
             }
 
-
-            final String mobID = HookTools.f_TileEntityMobSpawner_mobID.invoke(this);
-
             for (int attempt = 0; attempt < 4; attempt++) {
-                final Entity entity = EntityList.createEntityInWorld(mobID, worldObj);
+                final Entity entity = EntityList.createEntityInWorld(this.getMobID(), worldObj);
                 if (entity == null) {
                     return;
                 }

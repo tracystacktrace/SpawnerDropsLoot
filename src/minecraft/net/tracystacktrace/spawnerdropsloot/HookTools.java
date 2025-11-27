@@ -1,6 +1,5 @@
 package net.tracystacktrace.spawnerdropsloot;
 
-import net.tracystacktrace.spawnerdropsloot.hooks.f_TileEntityMobSpawner_mobID;
 import sun.misc.Unsafe;
 
 import java.lang.invoke.MethodHandles;
@@ -11,8 +10,6 @@ public final class HookTools {
 
     private static final Unsafe UNSAFE;
     public static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
-
-    public static final f_TileEntityMobSpawner_mobID f_TileEntityMobSpawner_mobID = new f_TileEntityMobSpawner_mobID();
 
     static {
         boolean test_obf;
