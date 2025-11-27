@@ -1,7 +1,6 @@
 package net.tracystacktrace.spawnerdropsloot.patch;
 
 import net.minecraft.src.*;
-import net.tracystacktrace.spawnerdropsloot.HookTools;
 
 public class PatchedTileEntityMobSpawner extends TileEntityMobSpawner {
     private void customUpdateDelay() {

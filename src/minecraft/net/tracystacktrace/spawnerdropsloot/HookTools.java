@@ -2,14 +2,12 @@ package net.tracystacktrace.spawnerdropsloot;
 
 import sun.misc.Unsafe;
 
-import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 
 public final class HookTools {
     public static final boolean OBFUSCATED;
 
     private static final Unsafe UNSAFE;
-    public static final MethodHandles.Lookup LOOKUP = MethodHandles.lookup();
 
     static {
         boolean test_obf;
