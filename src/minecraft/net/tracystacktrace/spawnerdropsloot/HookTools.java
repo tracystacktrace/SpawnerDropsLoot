@@ -1,6 +1,5 @@
 package net.tracystacktrace.spawnerdropsloot;
 
-import net.minecraft.client.Minecraft;
 import net.tracystacktrace.spawnerdropsloot.hooks.f_TileEntityMobSpawner_mobID;
 import net.tracystacktrace.spawnerdropsloot.hooks.m_TileEntityMobSpawner_updateDelay;
 import sun.misc.Unsafe;
@@ -20,7 +19,7 @@ public final class HookTools {
     static {
         boolean test_obf;
         try {
-            Minecraft.class.getDeclaredField("theMinecraft");
+            net.minecraft.client.Minecraft.class.getDeclaredField("theMinecraft");
             test_obf = false;
         } catch (NoSuchFieldException e) {
             test_obf = true;

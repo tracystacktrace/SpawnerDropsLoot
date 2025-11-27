@@ -1,5 +1,7 @@
 package net.tracystacktrace.spawnerdropsloot;
 
+import net.minecraft.src.mod_SpawnerDropsLoot;
+
 import java.lang.invoke.MethodHandle;
 import java.lang.reflect.Method;
 
@@ -18,6 +20,7 @@ public abstract class MethodHook<T> {
                 method.setAccessible(true);
                 handle = HookTools.LOOKUP.unreflect(method);
                 initialized = true;
+                mod_SpawnerDropsLoot.LOGGER.debug("Initialized hook for method: {}", method.toString());
             } catch (NoSuchMethodException e) {
                 throw new RuntimeException(e);
             } catch (IllegalAccessException e) {
