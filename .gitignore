@@ -1,5 +1,5 @@
 *
 !/.gitignore
 !/docs/icon.png
-!/src/minecraft/net/minecraft/src/mod_SpawnerDropsLoot.java
-!/src/minecraft/net/tracystacktrace/
+!/client/src/minecraft/net/minecraft/src/mod_SpawnerDropsLoot.java
+!/client/src/minecraft/net/tracystacktrace/
