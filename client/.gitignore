@@ -1,0 +1,4 @@
+*
+!/.gitignore
+!/src/minecraft/net/minecraft/src/mod_SpawnerDropsLoot.java
+!/src/minecraft/net/tracystacktrace/

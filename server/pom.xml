@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.tracystacktrace</groupId>
+    <artifactId>spawnerdropsloot</artifactId>
+    <version>0.3</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!--
+        Please, provide your own patched CraftBukkit NFC jar file in the "libs" folder.
+        Don't know how? Check out this page with instructions:
+        https://newfrontiercraft.net/thread/158/
+
+        Due to legal reasons I cannot simply provide patched craftbukkit jar file here
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.mojang</groupId>
+            <artifactId>minecraft</artifactId>
+            <version>b1.7.3</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/craftbukkit_nfc.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <!-- The build hook to also output the .zip version of the mod (for bukkit) -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-jar-to-zip</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <copy
+                                        file="${project.build.directory}/${project.build.finalName}.jar"
+                                        tofile="${project.build.directory}/${project.build.finalName}.zip"
+                                        overwrite="true" />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

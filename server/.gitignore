@@ -1,0 +1,16 @@
+target/
+.idea/
+.vscode/
+
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+.DS_Store
+
+# do not include craftbukkit - let devs "build" it by themselves
+# y'know, legal troubles ain't nice
+libs/craftbukkit_nfc.jar
